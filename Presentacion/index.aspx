@@ -10,34 +10,20 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="login-container">
-            <h2>Iniciar Sesión</h2>
-            
-            <div class="form-group">
-                <label for="txtUsuario" class="required">Usuario:</label>
-                <asp:TextBox ID="txtUsuario" runat="server" 
-                    CssClass="form-control" 
-                    placeholder="Ingrese su usuario"></asp:TextBox>
-            </div>
-            
-            <div class="form-group">
-                <label for="txtClave" class="required">Contraseña:</label>
-                <asp:TextBox ID="txtClave" runat="server" 
-                    TextMode="Password" 
-                    CssClass="form-control" 
-                    placeholder="Ingrese su contraseña"></asp:TextBox>
-            </div>
-            
-            <asp:Button ID="btnLogin" runat="server" 
-                Text="Ingresar al Sistema" 
-                OnClick="btnLogin_Click" 
-                CssClass="btn-login" />
-            
-            <asp:Label ID="lblMensaje" runat="server" 
-                CssClass="mensaje-error" 
-                Visible="false"
-                EnableViewState="false"></asp:Label>
-        </div>
+     <div class="navbar">
+       <h1>Sistema</h1>
+
+       <div class="login-form">
+           <asp:TextBox ID="txtUsuario" runat="server" Placeholder="Usuario" />
+
+           <asp:TextBox ID="txtClave" runat="server" TextMode="Password" Placeholder="Contraseña" />
+
+           <asp:Button ID="btnLogin" runat="server" Text="Ingresar" OnClick="btnLogin_Click" />
+      </div>
+   </div>
+
+   <!-- MENSAJE -->
+   <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje" />
     </form>
 </body>
 </html>

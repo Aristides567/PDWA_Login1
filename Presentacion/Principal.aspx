@@ -10,7 +10,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
-        	<asp:Label ID="Label1" runat="server" Text="Principal"></asp:Label>
+            <h1>Bienvenido</h1>
+            <h3>Usuario: <asp:Label ID="lblUsuario" runat="server"></asp:Label>
+			</h3>
+            <asp:Button ID="btnOut" runat="server" OnClick="btnOut_Click" Text="Cerrar Sesion" />
+        	
         </div>
     </form>
 </body>
