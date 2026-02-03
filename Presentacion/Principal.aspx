@@ -15,6 +15,8 @@
 			</h3>
             <asp:Button ID="btnOut" runat="server" OnClick="btnOut_Click" Text="Cerrar Sesion" />
         	
+        	<asp:Button ID="btnHabitaciones" runat="server" OnClick="btnHabitaciones_Click" Text="Habitaciones" />
+        	
         </div>
     </form>
 </body>
