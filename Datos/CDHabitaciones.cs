@@ -16,16 +16,35 @@ namespace Datos
             using (SqlConnection con = Conexion.obtenerConexion())
             {
                 con.Open();
-                using(SqlCommand cmd = new SqlCommand("SELECT * FROM Habitaciones", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Habitaciones", con))
                 {
-                    using(SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {
                         da.Fill(dt);
                     }
                 }
                 con.Close();
             }
-                return dt;
+            return dt;
+        }
+
+        public bool AgregarHabitaciones(int numero, string descripcion, int cantidad)
+        {
+            using (SqlConnection con = Conexion.obtenerConexion())
+            {
+                con.Open();
+                using(SqlCommand cmd = new SqlCommand("INSERT INTO Habitaciones (Numero, Descripcion, Cant_huespedes) VALUES (@numero, @descripcion, @cantidad)", con))
+                {
+                    cmd.Parameters.AddWithValue("@numero", numero);
+                    cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    con.Close();
+                    return rowsAffected > 0;
+                }
+            }
         }
     }
 }
