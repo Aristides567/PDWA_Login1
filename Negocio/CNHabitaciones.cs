@@ -21,5 +21,15 @@ namespace Negocio
         {
             return CDHabitaciones.AgregarHabitaciones(numero, descripcion, cantidad);
         }
+
+        public bool ModifcarHabtiaciones(int id, int numero, string descripcion, int cantidad)
+        {
+            return CDHabitaciones.ModificarHabitaciones(id, numero, descripcion, cantidad);
+        }
+
+        public bool EliminarHabitaciones(int id)
+        {
+            return CDHabitaciones.EliminarHabitaciones(id);
+        }
     }
 }

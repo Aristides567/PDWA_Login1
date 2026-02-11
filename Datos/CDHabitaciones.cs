@@ -33,11 +33,49 @@ namespace Datos
             using (SqlConnection con = Conexion.obtenerConexion())
             {
                 con.Open();
-                using(SqlCommand cmd = new SqlCommand("INSERT INTO Habitaciones (Numero, Descripcion, Cant_huespedes) VALUES (@numero, @descripcion, @cantidad)", con))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO Habitaciones (Numero, Descripcion, Cant_huespedes) VALUES (@numero, @descripcion, @cantidad)", con))
                 {
                     cmd.Parameters.AddWithValue("@numero", numero);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@cantidad", cantidad);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    con.Close();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
+        public bool ModificarHabitaciones(int id, int numero, string descripcion, int cantidad)
+        {
+            using (SqlConnection con = Conexion.obtenerConexion())
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("UPDATE Habitaciones SET Numero = @numero, Descripcion = @descripcion, Cant_huespedes = @cantidad WHERE Id_habitaciones = @id", con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@numero", numero);
+                    cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    con.Close();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
+        public bool EliminarHabitaciones(int id)
+        {
+            using(SqlConnection con = Conexion.obtenerConexion())
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Habitaciones WHERE Id_habitaciones = @id", con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
